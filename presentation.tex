@@ -1,0 +1,528 @@
+\input{preheader}
+
+%\setbeamersize{text margin left=1cm,text margin right=1cm}
+\setbeamertemplate{navigation symbols}{} % выключим навигацию
+%\setbeamertemplate{navigation symbols}[only frame symbol]
+%\setbeamertemplate{footline}[page number]
+\setbeamertemplate{footline}[frame number]
+%\setbeamertemplate{footline}{\begin{flushright} \color{gray}{\insertframenumber} ~{}~{}~ \end{flushright}}
+\setbeamertemplate{caption}[numbered]
+\begin{document}
+
+%\setcounter{page}{2}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+%\section{Титульный лист}
+\title{\uppercase{Конвекция трехкомпонентных жидких смесей в связанных каналах}}  
+\author{студент 5 курса М.\,С. Солодовников\\ Научный руководитель:\\ д.ф.-м.н., профессор В.\,А. Демин}
+\institute{Пермский государственный национальный исследовательский университет\\ Физический факультет\\ Кафедра теоретической физики}
+\date{Пермь 2012}
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\section{Постановка задачи}
+\subsection{Математичкская модель}
+
+\begin{frame}
+\frametitle{Геометрия задачи}
+
+%\captionsetup[figure]{labelfont={it,red},textfont={bf,it}}]
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.30\textwidth,clip,keepaspectratio]{figs/Problem_formulation/Model.png}
+%	\caption{Система координат}
+	\label{fig:model}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Обезразмеренная система уравнений в приближениии Буссинеска}
+
+%\begin{itemize}
+%\item
+\begin{equation}\label{eq:velocity_dl}
+\frac{\partial \vec{v}}{\partial t}+(\vec{v} \cdot \nabla) \vec{v} = - \nabla p + \Delta \vec{v} + \frac{Ra H}{Pr} [(1 + \varepsilon) T - F - \phi] \vec{\gamma}
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:temperature_dl}
+\frac{\partial T}{\partial t} + (\vec{v} \cdot \nabla) T = \frac{1}{Pr} \Delta T, ~div~\vec{v} = 0.
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:F}
+\frac{\partial F}{\partial t} + (\vec{v} \cdot \nabla) F = \frac{1}{Sc} \Delta F + \frac{\varepsilon}{Pr} \Delta T
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:conc_phi_dl}
+\frac{\partial \phi}{\partial t} + (\vec{v} \cdot \nabla) \phi = \frac{1}{Sc_\phi} (\Delta \phi+ Bl \nabla \phi \cdot \vec{\gamma})
+\end{equation}
+%\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Единицы измерения, безразмерные параметры}
+
+При обезразмеривании уравнений (5) --- (8) в качестве единицы длины выбрана полутолщина канала $d$, времени -- \large$\frac{d^2}{\nu}$,\normalsize скорости -- \large$\frac{\nu}{d}$,\normalsize температуры -- \large$\theta$,\normalsize концентрации жидкой фазы -- \large$\theta \frac{\beta_t}{\beta_c}$,\normalsize концентрации твердой фазы -- \large$\theta \frac{\beta_t}{\beta_\phi}$ , \normalsize давления -- \large$\frac{\rho \nu^2}{d^2}$.\normalsize
+
+В уравнения входят безразмерные параметры
+\begin{center}
+$Ra$ = \Large$\frac{ g \beta_t \theta d^3}{\nu \chi}$, \normalsize$Sc$ = \Large$\frac{\nu}{D}$,  \normalsize$Sc_\phi$ = \Large $\frac{\nu}{D_\phi}$, \normalsize $Pr$ = \Large$\frac{\nu}{\chi}$,\\ \normalsize$Bl$ = \Large$\frac{d (\rho_\phi - \rho) g V_0}{k_B \bar{T}}$,\\ \normalsize$\varepsilon$ = \Large$\frac{\alpha \beta_c}{\beta_t}$,
+\end{center}
+\normalsize
+где $Ra$, $Sc$, $Sc_\phi$, $Pr$, $Bl$ --- числа Рэлея, Шмидта (для жидкой и твердой фазы соответственно),  Прандтля, Больцмана; $\varepsilon$ -- термодиффузионный параметр, $H$ -- безразмерная высота каналов.
+\end{frame}
+
+\begin{frame}
+\frametitle{Граничные условия}
+
+На твердых границах каналов ставится условие прилипания для скорости и равенство нулю нормальной компоненты потока вещества:
+
+\begin{center}
+$\left. \vec{v}\right|_\Gamma = 0$, \large \quad $\left. \frac{\partial \phi}{\partial \vec{n}} \right.$$\left. \right|_\Gamma$\normalsize = 0, \large \quad$\left. \frac{\partial F}{\partial \vec{n}} \right|_\Gamma$ \normalsize = \large $(\frac{\partial C}{\partial \vec{n}}$ \normalsize + $\varepsilon$ \large $\frac{\partial T}{\partial \vec{n}})\left. \right|_\Gamma$ \normalsize = 0.
+\end{center}
+
+В дополнение стенки каналов считаются идеально теплопроводными, поэтому возмущения температуры на вертикальных границах расчетной области равны нулю и накладывается условие нулевого расхода через сечение обоих каналов.
+
+\end{frame}
+
+\section{Методика решения}
+\subsection{Состояние механического равновесия}
+
+\begin{frame}
+\frametitle{Состояние механического равновесия}
+%\begin{itemize}
+%\item
+\begin{equation} \label{eq:bal1}
+(\nabla T_0 - \nabla C_0 - \nabla \phi_0)\times \vec{\gamma} = 0
+\end{equation}
+\begin{equation} \label{eq:bal2}
+\Delta T_0 = 0, ~\Delta C_0 = 0
+\end{equation}
+\begin{equation} \label{eq;bal4}
+\Delta \phi_0 + Bl \nabla \phi_0 \cdot \vec{\gamma} = 0
+\end{equation}
+\\
+%\pause
+%\item
+\begin{equation} \label{eq;bal5}
+T_0 = - z / H
+\end{equation}
+\begin{equation} \label{eq;bal6}
+C_0 = \varepsilon z / H
+\end{equation}
+\begin{equation} \label{eq;bal7}
+\phi_0 = \xi_0 e^{-Bl \cdot z}
+\end{equation}
+%\end{itemize}
+
+\end{frame}
+
+\subsection{Аналитическое решение стационарной задачи}
+
+\begin{frame}
+\frametitle{Решение стационарной задачи}
+%\begin{itemize}
+%\item
+\begin{equation} \label{eq:u}
+\bcancel{\frac{\partial u}{\partial t}} = \Delta u + \frac{Ra}{2 Pr}((1 + \varepsilon)\int\limits_{0}^{H}(T_1 - T_2)dz - \int\limits_{0}^{H}(F_1 - F_2)dz - \int\limits_{0}^{H}(\phi_1 - \phi_2)dz),
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:vel-app}
+v_z = u(z) \sin (\pi x/ 2) \cos (\pi y / 2),
+\end{equation}
+\begin{equation}\label{eq:temp-app}
+T = \theta(z) \sin (\pi x / 2) \cos (\pi y / 2).
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:F-app}
+F = f(z) C_{13}(y) S_{13}(x), ~\phi = \varphi(z) C_{13}(y) S_{13}(x).
+\end{equation}
+\begin{equation}\label{eq:base-F}
+S_{13}(x) = \sin (\pi x / 2) - \frac{1}{3} \sin (3 \pi x / 2), ~C_{13}(x) = \cos (\pi x / 2) + \frac{1}{3} \cos (3 \pi x / 2)
+\end{equation}
+%\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Система уравнений \footnote[1]{Метод решения подобной системы уравнений подробно описан в статье Глухов А.Ф., Демин В.А., Путин Г.Ф. О разделении смесей в связанных каналах // ПМТФ, 2009, т. 50, № 1, с. 68-77.}}
+\begin{equation}\label{eq:theta-gal}
+\frac{1}{Pr} \theta_{1 , 2}^{\prime \prime} \mp \frac{64}{9 \pi^2} u \theta_{1 , 2}^{\prime} - \frac{\pi^2}{2 Pr} \theta_{1 , 2} \pm \frac{u}{H} = 0 %\footnote{Метод решения подобной системы уравнений подробно описан в статье Глухов А.Ф., Демин В.А., Путин Г.Ф. О разделении смесей в связанных каналах // ПМТФ, 2009, т. 50, № 1, с. 68-77.}
+\end{equation}
+\begin{equation}\label{eq:f-gal}
+f_{1 , 2}^{\prime \prime} \mp \frac{8.56 Sc}{\pi^2} u f_{1, 2}^{\prime} - \frac{9 \pi^2}{10} f_{1, 2} = \frac{81 \varepsilon Sc}{100 Pr}(\frac{\pi^2}{2} \theta_{1, 2} - \theta_{1, 2}^{\prime \prime})
+\end{equation}
+\begin{equation}\label{eq:phi-gal}
+\varphi_{1, 2}^{\prime \prime} + (Bl \mp \frac{8.56 Sc_\phi u}{\pi^2}) \varphi_{1, 2}^{\prime} - \frac{9 \pi^2}{10} \varphi_{1, 2} \pm \frac{81 \xi_0 Bl Sc_\phi}{100} u e^{- Bl z} = 0
+\end{equation}
+\begin{equation}\label{eq:u-gal}
+\frac{\pi^2}{2} u - \frac{Ra}{2 Pr}((1 + \varepsilon) \int\limits_{0}^{H}(\theta_1 - \theta_2)dz - \int\limits_{0}^{H}(f_1 - f_2)dz - \int\limits_{0}^{H}(\varphi_1 - \varphi_2)dz) = 0
+\end{equation}
+
+
+\footnotesize $^1$ Метод решения подобной системы уравнений подробно описан в статье Глухов А.Ф., Демин В.А., Путин Г.Ф. О разделении смесей в связанных каналах // ПМТФ, 2009, т. 50, № 1, с. 68-77.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Дополнительные предположения, граничные условия}
+%\begin{itemize}
+%\item
+\begin{equation*}
+Bl = \frac{1.5\cdot10^{-3}\cdot(7800 - 800)\cdot9.8\cdot4\pi(10\cdot10^{-9})^3}{3\cdot1.38\cdot10^{-23}~300} \cong 0.013
+\end{equation*}
+%\pause
+%\item
+\begin{equation*}
+\frac{1}{H}\int\limits_{0}^{H}e^{-Bl z}dz = \frac{1 - e^{- Bl H}}{H Bl} \cong 0.75
+\end{equation*}
+%\pause
+%\item
+\begin{equation}\label{eq:phi-gal-1}
+\varphi_{1, 2}^{\prime \prime} \mp \frac{8.56 Sc_\phi u}{\pi^2} \varphi_{1, 2}^{\prime} - \frac{9 \pi^2}{10} \varphi_{1, 2} \pm 0,75\frac{81 \xi_0 Bl Sc_\phi}{100} u  = 0
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:bound-gal}
+z = 0, H: ~\theta_1 = \theta_2, ~f_1 = f_2, ~\varphi_1 = \varphi_2, ~\theta_1^\prime = - \theta_2^\prime, ~f_1^\prime = - f_2^\prime, ~\varphi_1^\prime = - \varphi_2^\prime.
+\end{equation} 
+%\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Аналитическое решение стационарной задачи\footnote[1]{Значение используемых констант приведены в Приложении 1}}
+\begin{equation}\label{eq:theta-sol}
+\theta _1 = \frac{Pr u}{a q H}(\frac{2 \gamma e^{2 d z}}{e^{2 d H} + 1} - \frac{2 d e^{2 \gamma z}}{e^{2 \gamma H} + 1} + q), ~\theta_2 = - \theta_1(H - z);
+\end{equation}
+\begin{equation}\label{eq:f-sol}
+f_1 = \frac{A e^{2 \delta z}}{e^{2 \delta H}+ 1 } + \frac{B e^{2 \epsilon z}}{e^{2 \epsilon H}+ 1 } + \frac{\xi e^{2 d z}}{e^{2 d H}+ 1 } + \frac{\eta e^{2 \gamma z}}{e^{2 \gamma H}+ 1 } + \chi, ~f_2 = - f_1(H - z);
+\end{equation}
+\begin{equation}\label{eq:phi-sol}
+\varphi _1 = \frac{2 R}{\alpha - \beta}(\frac{\beta e^{\alpha z}}{e^{\alpha H} + 1} - \frac{\alpha e^{\beta z}}{e^{2 \beta H} + 1} + 1), ~\varphi_2 = - \varphi_1(H - z);
+\end{equation}
+\begin{multline}\label{eq:u-sol}
+\frac{Ra (1 + \varepsilon) u}{H a^2 q}(4 d^2 \th{(\gamma H)} - 4 \gamma^2 \th{(d H)} + H a q) -\\
+-\frac{Ra}{2 Pr}(\frac{A}{\delta}\th{(2 \delta H)} + \frac{B}{\epsilon}\th{(2 \epsilon H)} + \frac{\xi}{d}\th{(2 d H)} + \frac{\eta}{\gamma}\th{(2 \gamma H)} + 2 \chi H)) -\\
+- \frac{2 Ra ~R}{ Pr \alpha \beta (\alpha - \beta)}(\beta^2 \th{(\alpha H / 2)} - \alpha^2 \th{(\beta H / 2)} + \frac{\alpha \beta}{2} (\alpha - \beta) H) - a u = 0.
+\end{multline}
+
+
+\footnotesize $^1$ Значение используемых констант приведены в Приложении 1
+\end{frame}
+
+\begin{frame}
+\frametitle{Амплитудные кривые}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth,clip,keepaspectratio]{figs/Met/Ra(u)e+Scp010003000Scp3000.pdf}
+	\caption{\scriptsize Зависимость амплитуды скорости от числа Рэлея для положительной термодиффузии: правый рисунок --- при значениях чисел $Bl = 0.02 , Sc = 500 , Pr = 7,  \varepsilon = 0.01, Sc_{\phi} = 3000$ ; левый рисунок --- носик правой кривой при различных значениях числа $Sc_{\phi}$ ($Bl = 0.02 , Sc = 500 , Pr = 7,  \varepsilon = 0.01 $): ---  без учета седиментации, - -  $Sc_{\phi} = 1000$, $-\cdot - $ $Sc_{\phi} = 3000$ }
+	\label{fig:e1}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Амплитудные кривые}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth,clip,keepaspectratio]{figs/Met/Ra(u)e-Scp010003000Scp3000.pdf}
+	\caption{\scriptsize Зависимость амплитуды скорости от числа Рэлея для отрицательной термодиффузии: правый рисунок --- при значениях чисел $Bl = 0.02 , Sc = 500 , Pr = 7,  \varepsilon = - 0.01, Sc_{\phi} = 3000$ ; левый рисунок --- носик правой кривой при различных значениях числа $Sc_{\phi}$ ($Bl = 0.02 , Sc = 500 , Pr = 7,  \varepsilon = - 0.01 $): ---  без учета седиментации, - -  $Sc_{\phi} = 1000$, $-\cdot - $ $Sc_{\phi} = 3000$ }
+	\label{fig:e2}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Амплитудные кривые}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth,clip,keepaspectratio]{figs/Met/Ra(u)e0Scp010003000Scp3000.pdf}
+	\caption{\scriptsize Зависимость амплитуды скорости от числа Рэлея без термодиффузии: правый рисунок --- при значениях чисел $Bl = 0.02 , Sc = 500 , Pr = 7,  \varepsilon = 0, Sc_{\phi} = 3000$ ; левый рисунок --- носик правой кривой при различных значениях числа $Sc_{\phi}$ ($Bl = 0.02 , Sc = 500 , Pr = 7,  \varepsilon = 0$): ---  без учета седиментации, - -  $Sc_{\phi} = 1000$, $-\cdot - $ $Sc_{\phi} = 3000$ }
+	\label{fig:e3}
+\end{figure}
+
+\end{frame}
+
+\subsection{Численное решение нестационарной задачи}
+
+\begin{frame}
+\frametitle{Нестационарное надкритическое движение}
+%\begin{itemize}
+%\item
+\begin{equation}\label{eq:temp-vert}
+T = T_1(x,y,t) \sin(\pi z / H) + T_2(x,y,t) \cos(\pi z / H).
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:f-vert}
+F = F_1(x,y,t) + F_2(x,y,t) \cos(\pi z / H) + F_3(x,y,t) \cos(2 \pi z / H),
+\end{equation}
+%\pause
+%\item
+\begin{equation}\label{eq:phi-vert}
+\phi = \Phi_1(x,y,t) + \Phi_2(x,y,t) \cos(\pi z / H) + \Phi_3(x,y,t) \cos(2 \pi z / H).
+\end{equation}
+
+%\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Уравнения в частных производных для амплитуд скорости и температуры}
+\begin{equation}\label{eq:u-exp}
+\diffp{u}{t} = \Delta u + \frac{2 Ra H}{Pr \pi}((1 + \varepsilon) T_1 - \frac{\pi}{2} F_1 - \frac{\pi}{2} \Phi_1)
+\end{equation}
+\begin{equation}\label{eq:T1-exp}
+\diffp{T_1}{t} - \frac{\pi}{H} u T_2 = \frac{1}{Pr} \Delta_1 T_1 - \frac{\pi^2}{Pr H^2} T_1 + \frac{4}{\pi H} u
+\end{equation}
+\begin{equation}\label{eq:T2-exp}
+\diffp{T_2}{t} + \frac{\pi}{H} u T_1 = \frac{1}{Pr} \Delta_1 T_2 - \frac{\pi^2}{Pr H^2} T_2
+\end{equation}
+\begin{equation}\label{eq:delta1}
+\Delta_1 = \frac{\partial^2}{\partial x^2} +  \frac{\partial^2}{\partial y^2}
+\end{equation}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Уравнения в частных производных для амплитуд F \footnote[1]{}}
+\begin{equation}\label{eq:F1-exp}
+\diffp{F_1}{t} - \frac{2}{H} u F_2 = \frac{1}{Sc} \Delta_1 F_1 - \frac{2 \varepsilon}{\pi Pr} \Delta_1 T_1 - \frac{2 \pi \varepsilon}{Pr H^2} T_1
+\end{equation}
+\begin{equation}\label{eq:F2-exp}
+\diffp{F_2}{t} - \frac{16}{3 H} u F_3 = \frac{1}{Sc} \Delta_1 F_2 + \frac{\varepsilon}{Pr} \Delta_1 T_2 - \frac{\pi^2}{Sc H^2} F_2 - \frac{\pi^2 \varepsilon}{Pr H^2} T_2
+\end{equation}
+\begin{equation}\label{eq:F3-exp}
+\diffp{F_3}{t} + \frac{4}{3 H} u F_2 = \frac{1}{Sc} \Delta_1 F_3 - \frac{4 \varepsilon}{3 \pi Pr} \Delta_1 T_1 - \frac{4 \pi^2}{Sc H^2} F_3 + \frac{4 \pi \varepsilon}{3 Pr H^2} T_1
+\end{equation}
+
+
+\footnotesize $^1$ Метод решения этой системы уравнений подробно описан в статье Глухов А.Ф., Демин В.А., Путин Г.Ф. Конвекция бинарной смеси в связанных каналах при подогреве снизу // Изв. РАН, МЖГ, № 2, 2007, с. 13-23. 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Уравнения в частных производных для амплитуд $\phi$, граничные условия}
+\begin{equation}\label{eq:Phi1-exp}
+\diffp{\Phi_1}{t} - \frac{2}{H} u \Phi_2 = \frac{1}{Sc_\phi} \Delta_1 \Phi_1 - \frac{2 Bl}{Sc_\phi H} \Phi_2 + \frac{\xi_0}{H} u (1 - e^{-Bl H})
+\end{equation}
+\begin{equation}\label{eq:Phi2-exp}
+\diffp{\Phi_2}{t} - \frac{16}{3 H} u \Phi_3 = \frac{1}{Sc_\phi} \Delta_1 \Phi_2 - \frac{\pi^2}{Sc_\phi H^2} \Phi_2 - \frac{16 Bl}{3 Sc_\phi H} \Phi_3 + \frac{2 \xi_0}{H} u \frac{(1 + e^{-Bl H})}{(1 + \frac{\pi^2}{Bl^2 H^2})}
+\end{equation}
+\begin{equation}\label{eq:Phi3-exp}
+\diffp{\Phi_3}{t} + \frac{4}{3 H} u \Phi_2 = \frac{1}{Sc_\phi} \Delta_1 \Phi_3 - \frac{4 \pi^2}{Sc_\phi H^2} \Phi_3 + \frac{4 Bl}{3 Sc_\phi H} \Phi_2 + \frac{2 \xi_0}{H} u \frac{(1 - e^{-Bl H})}{(1 + \frac{4 \pi^2}{Bl^2 H^2})}
+\end{equation}
+\\
+\begin{center}
+$x = 0, -2; ~y = \pm1: ~u=0, ~T_1 = T_2 = 0, ~F_1^\prime = F_2^\prime = F_3^\prime = 0$,   
+\end{center}
+\begin{center}
+$\Phi_1^\prime = \Phi_2^\prime = \Phi_3^\prime = 0$,
+\end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=1.0\textwidth,clip,keepaspectratio]{figs/Met/1-Bl01Psi-5-4.pdf}
+	\caption{Временная зависимость амплитуды $\theta$ ($Bl$ = 0.1 , $Ra$ = 33) : левый график --- $\xi_0 = 10^{-5}$, правый график ---  $\xi_0 = 10^{-4}$}
+	\label{fig:theta(fi)-1}
+\end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\textwidth,clip,keepaspectratio]{figs/Met/2-Bl002Psi-5-4.pdf}
+	\caption{Временная зависимость амплитуды $\theta$ ($Bl$ = 0.02 , $Ra$ = 33) : левый график --- $\xi_0 = 10^{-5}$, правый график ---  $\xi_0 = 10^{-4}$}
+	\label{fig:theta(fi)-2}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=1.0\textwidth,clip,keepaspectratio]{figs/Met/3-Bl01Psi-5-4.pdf}
+	\caption{Временная зависимость скорости ($Bl$ = 0.1 , $Ra$ = 33) : левый график --- $\xi_0 = 10^{-5}$, правый график ---  $\xi_0 = 10^{-4}$}
+	\label{fig:u(fi)-1}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=1.0\textwidth,clip,keepaspectratio]{figs/Met/4-Bl002Psi-5-4.pdf}
+	\caption{Временная зависимость скорости ($Bl$ = 0.02 , $Ra$ = 33) : левый график --- $\xi_0 = 10^{-5}$, правый график ---  $\xi_0 = 10^{-4}$}
+	\label{fig:u(fi)-2}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=0.5\textwidth,clip,keepaspectratio]{figs/Met/6.pdf}
+	\caption{\footnotesize Зависимость амплитуды $\theta$ от числа Рэлея ($Bl = 0.02$) с применением сплайн интерполяции: --- $\xi_0 = 10^{-4}$, - -  $\xi_0 = 5\cdot10^{-5}$, $-\cdot - $ $\xi_0 = 10^{-5}$}
+	\label{fig:theta(Ra)-1}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=0.5\textwidth,clip,keepaspectratio]{figs/Met/7.pdf}
+	\caption{\footnotesize Зависимость амплитуды $\theta$ от числа Рэлея ($Bl = 0.1$) с применением сплайн интерполяции: --- $\xi_0 = 10^{-4}$, - -  $\xi_0 = 5\cdot10^{-5}$, $-\cdot - $ $\xi_0 = 10^{-5}$}
+	\label{fig:theta(Ra)-2}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=0.9\textwidth,clip,keepaspectratio]{figs/Met/tau(Ra)Sc.pdf}
+	\caption{\footnotesize Зависимость периода колебаний от числа Рэлея для различных значений чисел Шмидта ($Pr = 7 , \xi_0 = 10^{-4}$) (Выполнена линейная интерполяция): левый график --- $Bl = 0.1$; правый график --- $Bl = 0.02$; --- $Sc = 50$, - -  $Sc = 100$, $-\cdot - $ $Sc = 300$}
+	\label{fig:tau(Ra)Sc}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=0.9\textwidth,clip,keepaspectratio]{figs/Met/tau(Ra)Pr.pdf}
+	\caption{\footnotesize Зависимость периода колебаний от числа Рэлея для различных значений чисел Прандтля ($Sc = 100 , \xi_0 = 10^{-4}$) (Выполнена линейная интерполяция): левый график --- $Bl = 0.1$; правый график --- $Bl = 0.02$; --- $Pr = 5$, - -  $Pr = 7$, $-\cdot - $ $Pr = 9$}
+	\label{fig:tau(Ra)Pr}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=0.55\textwidth,clip,keepaspectratio]{figs/Met/12-2.pdf}
+	\caption{\tiny Зависимость амплитуды $\theta$ от времени, для положительной термодиффузии, при различных значениях числа $\xi_0$ ($Bl = 0.1 , Sc = 100 , Pr = 7, Ra = 36, \varepsilon = 0.04 $), график 1 --- $\xi_0 = 10^{-4}$, 2 --- $\xi_0 = 5\cdot10^{-5}$, 3 --- $\xi_0 = 10^{-5}$ }
+	\label{fig:tet(t)-1}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Результаты численного счета}
+\begin{figure}[Ht!]
+	\centering
+	\includegraphics[width=0.55\textwidth,clip,keepaspectratio]{figs/Met/13-2.pdf}
+	\caption{\tiny Зависимость амплитуды $\theta$ от времени, для отрицательной термодиффузии, при различных значениях числа $\xi_0$ ($Bl = 0.1 , Sc = 100 , Pr = 7, Ra = 36, \varepsilon = - 0.04 $), график 1 --- $\xi_0 = 10^{-3}$, 2 --- $\xi_0 = 10^{-4}$, 3 --- $\xi_0 = 5\cdot10^{-5}$  }
+	\label{fig:tet(t)-2}
+\end{figure}
+\end{frame}
+
+\section{Заключение}
+\begin{frame}
+\justifying
+Решена задача о тепловой конвекции смеси, представляющей собой коллоидный раствор на основе бинарной молекулярной жидкости в связанных каналах при подогреве снизу. Получено аналитическое решение стационарной задачи в приближении прямолинейных траекторий. Численно методом конечных разностей проведено моделирование нестационарных режимов. В надкритической области наблюдались перебросовые колебания. Исследовано влияние изменения различных параметров на характер течения. Объяснен механизм влияния седиментации на перебросовые колебания.
+
+Результаты расчетов показывают, что при увеличении неоднородности распределения концентрации твердых частиц по вертикали, увеличивается период и амплитуда перебросовых колебаний. Показано, что при усилении вязкого механизма переноса вещества по отношению к диффузионному и теплопроводному увеличивается период перебросовых колебаний. Обнаружено возникновение перебросовых колебаний при отрицательной термодиффузии.
+
+\end{frame}
+
+\section{}
+
+\begin{frame}
+\begin{center}
+\Huge Спасибо за внимание!
+\end{center}
+
+\end{frame}
+
+\section{Приложения}
+
+%\subsection{Приложение 1}
+\begin{frame}
+\frametitle{Приложение 1}
+\begin{equation*}%\label{eq:const-1}
+d = \frac{b u Pr + q}{2}, \gamma = \frac {b u Pr - q}{2}, \delta = \frac {s u Sc + l}{2}, \epsilon = \frac {s u Sc - l}{2},
+\end{equation*}
+\begin{equation*}%\label{eq:const-2}
+\alpha = \frac{214 u Sc_\phi - \sqrt{(214 u Sc_{\phi})^2 + (45 \pi)^2}}{50 \pi^2},
+\end{equation*}
+\begin{equation*}%\label{eq:const-3}
+\beta = \frac{214 u Sc_\phi + \sqrt{(214 u Sc_{\phi})^2 + (45 \pi)^2}}{50 \pi^2},
+\end{equation*}
+\begin{equation*}%\label{eq:const-4}
+R = \frac{27 \xi_0 Sc_{\phi} Bl}{40 \pi^2} u.
+\end{equation*}
+Здесь $q = \sqrt{(b u Pr)^2 + a}; a = \pi^2/2; l = \sqrt{(s u Sc)^2 + g}; g = 9 \pi^2 / 10; b = 32 / (9 \pi^2); s = 0.434/\pi^2$.
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Приложение 1}
+\begin{equation*}
+\xi = \frac{0.81 \varepsilon \gamma Sc u (\pi^2 - 8 d^2)}{a q H (4 d - 4 s d Sc u -g)}, ~\eta = - \frac{0.81 \varepsilon d Sc u (\pi^2 - 8 \gamma^2)}{a q H (4 \gamma^2 - 4 s \gamma Sc u - g)}
+\end{equation*}
+
+\begin{equation*}
+~\chi = - \frac{0.45 \epsilon Sc u}{a H}\end{equation*}
+\begin{equation*}
+A = [\eta (\epsilon - \gamma) + \xi (\epsilon - d) + 2 \chi \epsilon] / l
+\end{equation*}
+\begin{equation*}
+B = [\eta (\delta - \gamma) + \xi (\delta - d) + 2 \chi \delta]/l
+\end{equation*}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Приложение 2}
+
+Для положительной терможиффузии произведен рассчет критического числа Рэлея при учете седиментации и без нее:
+
+Без учета седиментации $Ra_c = 18.77$.
+
+С учетом седиментации $(Sc_{\phi} = 1000)  Ra_c = 18.98$.
+
+С учетом седиментации $(Sc_{\phi} = 3000)  Ra_c = 19.42$.
+
+\end{frame}
+
+\end{document}

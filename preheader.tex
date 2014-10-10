@@ -1,0 +1,101 @@
+\documentclass[hyperref={unicode=true}]{beamer}
+% Стиль презентации
+\usetheme{CambridgeUS}
+\usecolortheme{orchid}
+\usepackage{cmap}                     % Поддержка поиска русских слов в PDF (pdflatex), ЗАГРУЖАТЬ САМЫМ ПЕРВЫМ!
+%\usepackage[unicode=true]{hyperref} % гиперрсылки. в том числе имим становятся обычные ссылки и оглавления.
+\usepackage{mathtext}                 % Поддержка кириллицы в математическом режиме. ЗАГРУЖАТЬ ДО fontenc
+%\usepackage[warn]{mathtext}          % замена предыдущему, только выводятся предупреждения об кириллице в формулах     
+\usepackage[T2A]{fontenc}          % для использования русской раскладки необходимо
+\usepackage[koi8-r,cp1251]{inputenc}         % набить данные три строчки
+\usepackage[english,russian]{babel}   % может быть использована и другая кодировка cp866 вместо cp1251
+
+\usepackage{floatflt}
+\usepackage{wrapfig}
+
+
+\usepackage{amsmath,amssymb, amsxtra}
+\usepackage{nccmath}                  % расширяет пакет amsmath
+\usepackage{epsfig}                   % все остальные пакеты использую для корректной вставки графики
+\usepackage{graphicx}                 % и т.п.
+%\usepackage{graphics}
+\usepackage{nccfloats}
+\usepackage{color}
+\usepackage{cite}
+%\usepackage{caption2}                % чтобы в подрисуночной подписи
+%\renewcommand{\captionlabeldelim}{.} % ... после слова рис. ставилась точка
+\usepackage{ccaption} % другой способ, чтобы в подрисуночной подписи
+\captiondelim{. }     % ...  после слова рис. ставилась точка
+\usepackage{indentfirst} % Красная строка в первом абзаце 
+\usepackage[shortcuts,cyremdash]{extdash} % переносы в составных словах, дефисы и тире (из ncc-tools)
+\usepackage[thinc,italic]{esdiff} % упрощает написание частных и прочих производных. Без italic d не будет курсивом
+%\usepackage{commath} % почти тоже самое
+\usepackage{shadow} % боксы красивые
+\usepackage{xtab} % таблицы,с возможностью разбиения на страницы,с возможностью подстрчного примечания на каждой странице с таблицей
+%\usepackage{enumerate} % расширение возможностей перечней
+\usepackage{lscape}    % меняем ориентацию текста на 90 град...
+\usepackage{pdflscape} % ... для этого необходимый текс помещаем в окружение landscape (например, таблтицу)
+\usepackage{ncccomma} % используя этот пакет, запятая в 3,14 будет считать разделителем разрядов, а не десятков
+\usepackage{mathrsfs} % чтобы писать всякие гамильтонианы
+\usepackage{yfonts} % готика в математическом режиме
+\usepackage[integrals]{wasysym} % чтобы интегралы были прямыми как в русском стиле
+\usepackage{multirow} % ячейка на несколько строк
+\usepackage[perpage]{footmisc} % подстрочные примечания. с опцией perpage нумерация сносок при переходе на новую страницу опять начинается с единицы
+\usepackage{prettyref} % пакет позволяет внешний вид ссылки в зависимости от префикса. к примеру, \newrefformat{eq}{формула \No~\ref{#1}}. Тогда на выходе получим \prettyref{eq:1} -> формула № 1.
+% размеры страницы
+
+
+
+
+\usepackage{ragged2e}
+
+\usepackage{cancel}
+
+\usepackage{array} % чтобы выровнять по центру колонку в таблице, у которой размер высчитывается вручную: >{\centering}p{1cm} или >{\centering}m{1cm} 
+
+\usepackage{wrapfig}  % плавающие объекты
+%\usepackage{floatflt} % 
+\usepackage{soul} % различные способы выделения текста (soul.pdf)
+
+\usepackage{cases} % содержит окружение numcases для сохдания условных конструкций
+
+\usepackage{animate}
+
+% МОИ КОМАНДЫ
+\renewcommand{\Re}{\text{Re}} % чтобы отображались действительня и комплексная 
+\renewcommand{\Im}{\text{Im}} % части по русской традиции
+
+% символ полядка величины
+\newcommand{\ord}[1]{^{(#1)}}
+
+\newcommand{\const}{\text{const}}
+% текст,который не знаю, что означает
+\newcommand{\dontknow}[1]{\textcolor{red}{#1}}
+
+% перенос формул в тексте (рецепт Евгения Миньковского)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\newcommand{\ham}{\mathcal{H}} % гамильтониан
+\newcommand{\lag}{\mathscr{L}} % лагранжиан
+\newcommand{\energy}{\mathcal{E}} % энергия
+\newcommand{\degC}{\textdegree{}C} % Градусы Цельсия
+\newcommand{\degK}{K} % \newcommand{\degK}{\textdegree{}K} % Градусы Кельвина
+\newcommand{\elfield}{\mathscr{E}} % электрическое поле
+\newcommand{\real}{\mathbb{Z}} % действительные числа
+
+\newcommand{\backupbegin}{
+%\newcounter{finalframe}
+%\renewcommand{\appendixname}{Приложение}
+%\setcounter{finalframe}{\value{framenumber}}
+   \newcounter{framenumbervorappendix}
+   \appendix
+   \setcounter{framenumbervorappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \addtocounter{framenumbervorappendix}{-\value{framenumber}}
+   \addtocounter{framenumber}{\value{framenumbervorappendix}} 
+   %\setcounter{framenumber}{\value{finalframe}}
+}
+
+%\usepackage{caption}
+
