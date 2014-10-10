@@ -1,4 +1,0 @@
-DecisionTheory
-==============
-
-Presentation
